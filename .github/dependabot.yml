@@ -1,12 +1,18 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
-
 version: 2
 updates:
-  - package-ecosystem: "npm" # for frontend dependencies
-    directory: "/src/frontend"  
+  - package-ecosystem: "npm"
+    directory: "/src/frontend"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "build"
+    target-branch: "dependabotchanges"
+    open-pull-requests-limit: 100
+    registries:
+      - npm_public_registry
+
+  - package-ecosystem: "pip"
+    directory: "/src"
     schedule:
       interval: "monthly"
     commit-message:
@@ -14,15 +20,6 @@ updates:
     target-branch: "dependabotchanges"
     open-pull-requests-limit: 100
 
-  - package-ecosystem: "pip" # for backend dependencies
-    directory: "/src"   
-    schedule:
-      interval: "monthly"
-    commit-message:
-      prefix: "build"
-    target-branch: "dependabotchanges"
-    open-pull-requests-limit: 100
-    
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -31,11 +28,9 @@ updates:
       prefix: "build"
     target-branch: "dependabotchanges"
     open-pull-requests-limit: 100
-       registries:
-     - npm_public_registry  # Only use public npm registry
 
 registries:
- npm_public_registry:
-   type: "npm-registry"
-   url: "https://registry.npmjs.org/"
-   token: ${{ secrets.TOKEN }}
+  npm_public_registry:
+    type: "npm-registry"
+    url: "https://registry.npmjs.org/"
+    token: "${{ secrets.TOKEN }}"
