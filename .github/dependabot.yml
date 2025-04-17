@@ -10,6 +10,8 @@ updates:
     open-pull-requests-limit: 100
     registries:
       - npm_public_registry
+    ignore:
+      - dependency-name: "eslint"
 
   - package-ecosystem: "pip"
     directory: "/src"
