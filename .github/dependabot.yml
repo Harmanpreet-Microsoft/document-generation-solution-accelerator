@@ -8,8 +8,7 @@ updates:
       prefix: "build"
     target-branch: "dependabotchanges"
     open-pull-requests-limit: 100
-    registries:
-      - npm_public_registry
+
     ignore:
       - dependency-name: "eslint"
 
@@ -30,9 +29,3 @@ updates:
       prefix: "build"
     target-branch: "dependabotchanges"
     open-pull-requests-limit: 100
-
-registries:
-  npm_public_registry:
-    type: "npm-registry"
-    url: "https://registry.npmjs.org/"
-    token: "${{ secrets.TOKEN }}"
